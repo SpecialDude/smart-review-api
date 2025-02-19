@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     'drf_spectacular',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,16 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost",
+    "http://127.0.0.1:8000",
+    "http://localhost:8080",
+    "http://127.0.0.1:5500",
+    "http://127.0.0.1",
+    "http://localhost:5500",
+    "http://localhost:5173",
+    "https://Lateefat319.pythonanywhere.com"
+]
