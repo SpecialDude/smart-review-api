@@ -25,21 +25,25 @@ SECRET_KEY = "django-insecure-zi&lr^$f=w_sr-mk0#8%1sze%f7d&&@9cg51hf9)oyt90fr1kj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    'smart_review',
+
+    'rest_framework',
+    'drf_spectacular',
+    'corsheaders',
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'rest_framework',
-    'drf_spectacular',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -147,5 +151,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://localhost:5173",
     "https://Lateefat319.pythonanywhere.com",
-    'lateefat319.pythonanywhere.com'
+    'https://lateefat319.pythonanywhere.com'
 ]
