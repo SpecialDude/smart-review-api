@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import json_repair
 
 import cohere
 
@@ -42,6 +43,10 @@ class SmartLLMReviewService:
                         }}\n\
                     ]\n\
                     ```"
+                },
+                {
+                    "role": "system",
+                    "content": "Your are a programmer that understand the importance of having a consistent and valid json string that has exact same keys as defined without a single wrongly spelt key."
                 }
             ]
         )
@@ -49,13 +54,17 @@ class SmartLLMReviewService:
         content = response.message.content[0].text
         clean_json = re.sub(r"```json\n|\n```", "", content)
 
-        print(content)
+        clean_json = re.sub(r"^.*?```json\n*", "", content, flags=re.DOTALL)
+        clean_json = re.sub(r"\n*```$", "", clean_json)
+
+        print(clean_json)
 
         print("\n\n\nContent\n\n")
 
         print(clean_json)
 
-        data = json.loads(clean_json)
+        # data = json.loads(clean_json)
+        data = json_repair.loads(clean_json)
 
         print(data)
 
